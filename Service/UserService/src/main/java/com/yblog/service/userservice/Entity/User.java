@@ -6,20 +6,13 @@ import lombok.Data;
 
 import java.sql.Timestamp;
 
-;
-
 @Data
-@TableName(value = "users")
+@TableName("users")
 public class User {
-    @TableField("id")
+
     private Long id;
-
-    @TableField("uid")
     private String uid;
-
-    @TableField("username")
     private String username;
-    @TableField("email")
     private String email;
 
     @TableField("password_hash")
@@ -41,7 +34,7 @@ public class User {
     private Status status;
 
     @TableField("last_login_at")
-    private Timestamp last_login_at;
+    private Timestamp lastLogin_at;
 
     @TableField("created_at")
     private Timestamp created_at;

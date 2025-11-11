@@ -10,10 +10,4 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @MapperScan("com.yblog.service.userservice.Entity.Mapper")
 public class MybatisConfig {
-    @Bean
-    public MybatisPlusInterceptor mybatisPlusInterceptor() {
-        MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
-        interceptor.addInnerInterceptor(new PaginationInnerInterceptor(DbType.MYSQL));
-        return interceptor;
-    }
 }

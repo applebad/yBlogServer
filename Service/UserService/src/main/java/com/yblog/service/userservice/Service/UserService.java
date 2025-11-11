@@ -10,4 +10,8 @@ public interface UserService{
     public UserDTO getUserById(String uid);
 
     public boolean updateUser(UserDTO userDTO);
+
+    public boolean deleteUser(String uid);
+
+    public boolean addUser(UserDTO userDTO);
 }

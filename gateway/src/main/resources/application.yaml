@@ -1,3 +1,7 @@
+#分割线为属性值 springboot2.4+ new
+config:
+  api : "api"
+---
 server:
   port: 8080
 spring:
@@ -13,16 +17,24 @@ spring:
         - id : user-service-route # id
           uri : lb://user-service # lb
           predicates:
-            - Path=/api/user/**
+            - Path=/${config.api}/user/**
+          filters:
+            - StripPrefix=1
+
+        - id : post-service
+          uri : lb://post-service
+          predicates:
+            - Path=/${config.api}/user/**
           filters:
             - StripPrefix=1
 
         - id : test-service-route
           uri : lb://test-service
           predicates:
-            - Path=/api/test/**
+            - Path=/${config.api}/test/**
           filters:
             - StripPrefix=1
+
 
 eureka:
   client:

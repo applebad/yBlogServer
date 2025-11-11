@@ -30,6 +30,8 @@ public class UserServiceImpl implements UserService {
         this.redisService = redisService;
     }
 
+
+
     public UserDTO getUserById(String uid){
         UserDTO userDTO = new UserDTO();
         User user = redisService.get(uid, User.class);
@@ -43,15 +45,16 @@ public class UserServiceImpl implements UserService {
         return userDTO;
     }
 
-    public IPage<UserDTO> getUsers(int pageNum, int size) {
-        IPage<User> page = new Page<>(pageNum,size);
-        userMapper.selectPage(page, null);
-        return page.convert(user -> {
+    public IPage<UserDTO> getUsers(int page, int size) {
+        IPage<User> userPage = new Page<>(page,size);
+        userMapper.selectPage(userPage, null);
+        return userPage.convert(user -> {
             UserDTO userDTO = new UserDTO();
             BeanUtils.copyProperties(user, userDTO);
             return userDTO;
         });
     }
+    public IPage<UserDTO> getUsers(int page) {return getUsers(page, 10);}
 
     public boolean updateUser(UserDTO userDTO) {
         try {
@@ -63,6 +66,27 @@ public class UserServiceImpl implements UserService {
             }
             return false;
         } catch (Exception e) {
+            return false;
+        }
+    }
+
+    @Override
+    public boolean deleteUser(String uid) {
+        try{
+            return userMapper.deleteByMap(Map.of("uid",uid)) > 0;
+        }catch (Exception e){
+            return false;
+        }
+
+    }
+
+    @Override
+    public boolean addUser(UserDTO userDTO) {
+        try{
+            User user = new User();
+            BeanUtils.copyProperties(userDTO, user);
+            return userMapper.insert(user) > 0;
+        }catch (Exception e){
             return false;
         }
     }

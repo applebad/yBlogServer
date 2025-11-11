@@ -13,7 +13,6 @@ import java.sql.Timestamp;
 @Setter
 @Component
 public class UserDTO {
-
     //排除数据库id
 
     private String uid;
@@ -22,11 +21,11 @@ public class UserDTO {
     
     private String email;
 
-    private String password_hash;
+    private String passwordHash;
 
-    private String display_name;
+    private String displayName;
 
-    private String avatar_url;
+    private String avatarUrl;
     //个人简介？
     private String bio;
     
@@ -34,13 +33,13 @@ public class UserDTO {
     
     private Status status;
     
-    private Timestamp last_login_at;
+    private Timestamp lastLoginAt;
     
-    private Timestamp created_at;
+    private Timestamp createdAt;
 
-    private Timestamp updated_at;
+    private Timestamp updatedAt;
 
-    private Timestamp deleted_at;
+    private Timestamp deletedAt;
 
     public UserDTO(){}
 
@@ -52,16 +51,16 @@ public class UserDTO {
             this.uid = user.getUid();
             this.username = user.getUsername();
             this.email = user.getEmail();
-            this.password_hash = user.getPassword_hash();
-            this.display_name = user.getDisplay_name();
-            this.avatar_url = user.getAvatar_url();
+            this.passwordHash = user.getPassword_hash();
+            this.displayName = user.getDisplay_name();
+            this.avatarUrl = user.getAvatar_url();
             this.bio = user.getBio();
             this.role = user.getRole();
             this.status = user.getStatus();
-            this.last_login_at = user.getLast_login_at();
-            this.created_at = user.getCreated_at();
-            this.updated_at = user.getUpdated_at();
-            this.deleted_at = user.getDeleted_at();
+            this.lastLoginAt = user.getLastLogin_at();
+            this.createdAt = user.getCreated_at();
+            this.updatedAt = user.getUpdated_at();
+            this.deletedAt = user.getDeleted_at();
             return true;
         }catch (Exception e){
             return false;

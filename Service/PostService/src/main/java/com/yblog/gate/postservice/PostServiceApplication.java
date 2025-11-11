@@ -1,4 +1,4 @@
-package com.yblog.gate.testservice;
+package com.yblog.gate.postservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,10 +8,10 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableFeignClients
-public class TestServiceApplication {
+public class PostServiceApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(TestServiceApplication.class, args);
+        SpringApplication.run(PostServiceApplication.class, args);
     }
 
 }
